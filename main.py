@@ -11,6 +11,10 @@ from typing import Union
 import discord
 from discord.ext import commands
 
+from webserver import keep_alive
+
+import os
+
 # discord setup
 
 client = commands.Bot(command_prefix=commands.when_mentioned_or('aternos '))
@@ -138,4 +142,9 @@ def main():
 
 threading.Thread(target=main).start()
 
-client.run('OTA3NTA0NjQ5MzY2NTQ4NTEw.YYoJkQ.KWLpQSxGpVY_Ivob2sxXzLZo5Vs')
+
+keep_alive()
+
+TOKEN = os.environ.get("token")
+
+client.run(TOKEN)
